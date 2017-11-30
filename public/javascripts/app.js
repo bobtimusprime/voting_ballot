@@ -23,13 +23,13 @@ angular.module('shopping',[])
        --Calls the create function to add to database and $scope.cart
     */
     $scope.addProduct = function(){
-      if($scope.firstName === '' && $scope.price === '') { return; }
+      if($scope.name === '' && $scope.price === '') { return; }
       $scope.create({
-         firstName: $scope.firstName,
+         name: $scope.name,
          price: $scope.price,
          purchases: 0,
       });
-      $scope.firstName = '';
+      $scope.name = '';
       $scope.price = '';
     };
 
@@ -56,7 +56,7 @@ angular.module('shopping',[])
           if(value.selected){
             $scope.purchase(value);
             if (!$scope.submittedCart.includes(value)){
-              console.log("Not in already in cart");
+              //console.log("Not in already in cart");
               $scope.submittedCart.push(value);
             }
           };

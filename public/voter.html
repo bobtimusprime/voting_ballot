@@ -18,13 +18,13 @@
 
   <div ng-repeat="product in cart.data | orderBy: ['price']">
     <input type="checkbox" ng-model="product.selected">
-    {{product.firstName}} {{product.price}}
+    {{product.name}} {{product.price}}
   </div>
   <button ng-click="addToCart()">Submit Votes</button>
 
   <h1>Submitted Cart </h1>
   <div ng-repeat="product in submittedCart | orderBy: 'price'">
-    {{product.firstName}} {{product.price}}
+    {{product.name}} {{product.price}}
   </div>
 
 

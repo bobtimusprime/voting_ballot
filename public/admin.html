@@ -18,7 +18,7 @@
 
   <div ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
     <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
-    {{product.firstName}} {{product.price}} - Purchases: {{product.purchases}}
+    {{product.Name}} {{product.price}} - Purchases: {{product.purchases}}
   </div>
 
   <form ng-submit="addProduct()">

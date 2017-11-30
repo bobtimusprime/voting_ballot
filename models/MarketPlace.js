@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var MarketPlaceSchema = new mongoose.Schema({
-   firstName: String,
+   name: String,
    price: Number,
    purchases: {type: Number, default: 0},
 });
