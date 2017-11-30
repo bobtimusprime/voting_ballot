@@ -29,11 +29,13 @@
     <button type="submit">Add product</button>
   </form>
 
-  <div ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
-    <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
-    {{product.name}} {{product.price}} - Purchases: {{product.purchases}}
-    <img class="product image" ng-src="{{product.imgURL}}" />
-  </div>
+  <div = "product-list">
+    <div ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
+      <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
+      {{product.name}} {{product.price}} - Purchases: {{product.purchases}}
+      <img class="product image" ng-src="{{product.imgURL}}" />
+    </div>
+ </div>
 
 </body>
 </html>

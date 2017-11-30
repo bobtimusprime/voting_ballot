@@ -30,3 +30,10 @@ h1{
   height: 200px;
   color: white;
 }
+
+.product-list{
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;
+  flex-wrap: wrap;
+}

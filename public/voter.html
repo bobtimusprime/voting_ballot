@@ -22,17 +22,21 @@
     <h1>Rainforest Marketplace</h1>
   </div>
 
-  <div class = "product" ng-repeat="product in cart.data | orderBy: ['price']">
-    <input type="checkbox" ng-model="product.selected" style="width:20px;height:20px;">
-    {{product.name}} : ${{product.price}}
-    <img ng-src="{{product.imgURL}}" />
-  </div>
-  <button ng-click="addToCart()">Add to Cart</button>
+  <div class="product-list">
+    <div class = "product" ng-repeat="product in cart.data | orderBy: ['price']">
+      <input type="checkbox" ng-model="product.selected" style="width:20px;height:20px;">
+      {{product.name}} : ${{product.price}}
+      <img ng-src="{{product.imgURL}}" />
+    </div>
+    <button ng-click="addToCart()">Add to Cart</button>
+ </div>
 
   <h1>Cart </h1>
-  <div class = "product" ng-repeat="product in submittedCart | orderBy: 'price'">
-    <img class="product image" ng-src="{{product.imgURL}}" />
-    {{product.name}} {{product.price}}
+  <div class="product-list">
+    <div class = "product" ng-repeat="product in submittedCart | orderBy: 'price'">
+      <img class="product image" ng-src="{{product.imgURL}}" />
+      {{product.name}} {{product.price}}
+    </div>
   </div>
 
 
