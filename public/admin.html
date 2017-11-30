@@ -16,18 +16,18 @@
 <body ng-app="shopping" ng-controller="ShopControl" >
   <h1>Rainforest Marketplace Administration</h1>
 
-  <div ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
-    <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
-    {{product.name}} {{product.price}} - Purchases: {{product.purchases}}
-    <img class="product image" ng-src="{{product.imgURL}}" />
-  </div>
-
   <form ng-submit="addProduct()">
     <input type="text" ng-model="name" placeholder="Product Name">
     <input type="number" ng-model="price" placeholder="Price">
     <input type="url" ng-model="imgURL" placeholder="Image URL">
     <button type="submit">Add product</button>
   </form>
+
+  <div ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
+    <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
+    {{product.name}} {{product.price}} - Purchases: {{product.purchases}}
+    <img class="product image" ng-src="{{product.imgURL}}" />
+  </div>
 
 </body>
 </html>

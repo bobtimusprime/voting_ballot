@@ -21,9 +21,9 @@
     {{product.name}} {{product.price}}
     <img class="product image" ng-src="{{product.imgURL}}" />
   </div>
-  <button ng-click="addToCart()">Submit Votes</button>
+  <button ng-click="addToCart()">Add to Cart</button>
 
-  <h1>Submitted Cart </h1>
+  <h1>Cart </h1>
   <div ng-repeat="product in submittedCart | orderBy: 'price'">
     <img class="product image" ng-src="{{product.imgURL}}" />
     {{product.name}} {{product.price}}
