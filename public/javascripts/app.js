@@ -55,7 +55,10 @@ angular.module('shopping',[])
         angular.forEach($scope.cart.data, function(value,key){
           if(value.selected){
             $scope.purchase(value);
-            $scope.submittedCart.push(value);
+            if (!$scope.submittedCart.includes(value)){
+              console.log("Not in already in cart");
+              $scope.submittedCart.push(value);
+            }
           };
         });
      };
