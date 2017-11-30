@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Polling Station</title>
+   
+   <!--Angular dependency-->
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+   
+   <!--Local Javascript dependency-->
+   <script src="javascripts/app.js"></script>
+
+   <!--Stylesheets-->
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   
+</head>
+<body ng-app="polling" ng-controller="PollControl" >
+  <h1>Polling Station</h1>
+  
+  <div ng-repeat="candidate in ballot.data | orderBy: ['lastName']">
+    <input type="checkbox" ng-model="candidate.selected">
+    {{candidate.firstName}} {{candidate.lastName}}
+  </div>
+  <button ng-click="dovote()">Submit Votes</button>
+
+  <h1>Submitted Ballot </h1>
+  <div ng-repeat="candidate in submittedBallot | orderBy: 'lastName'">
+    {{candidate.firstName}} {{candidate.lastName}}
+  </div> 
+
+
+   </body>
+</html>
+

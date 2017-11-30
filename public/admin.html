@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Polling Station</title>
+   
+   <!--Angular dependency-->
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+   
+   <!--Local Javascript dependency-->
+   <script src="javascripts/app.js"></script>
+
+   <!--Stylesheets-->
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   
+</head>
+<body ng-app="polling" ng-controller="PollControl" >
+  <h1>Polling Station Administration</h1>
+  
+  <div ng-repeat="candidate in ballot.data | orderBy: ['-votes','lastName']">
+    <span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
+    {{candidate.firstName}} {{candidate.lastName}} - Votes: {{candidate.votes}}
+  </div>
+  
+  <form ng-submit="addCandidate()">
+    <input type="text" ng-model="firstName" placeholder="First Name">
+    <input type="text" ng-model="lastName" placeholder="Last Name">
+    <button type="submit">Add Candidate</button>
+  </form>
+
+</body>
+</html>
+
