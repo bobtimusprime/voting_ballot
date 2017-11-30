@@ -1,8 +1,23 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+h1{
+  font: 64px;
+}
+
+.product{
+   width: 250px;
+   max-width: 90%;
+   border: 2px solid darkblue;
+   border-radius: 3px;
+}
+
+.product img{
+
 }
