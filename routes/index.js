@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Candidate = mongoose.model('PollStation');
+var Product = mongoose.model('MarketPlace');
 
 
 /* GET home page. */
@@ -14,56 +14,56 @@ router.get('/admin', function(req, res, next) {
   res.sendFile('admin.html', { root: 'public' });
 });
 
-/* Define paramaters for individual candidates */
-/* Anytime that :candidate is put in the route it will run through here first*/
-router.param('candidate', function(req, res, next, id) {
-  var query = Candidate.findById(id);
-  query.exec(function (err, candidate){
+/* Define paramaters for individual products */
+/* Anytime that :product is put in the route it will run through here first*/
+router.param('product', function(req, res, next, id) {
+  var query = product.findById(id);
+  query.exec(function (err, product){
     if (err) { return next(err); }
-    if (!candidate) { return next(new Error("Can't find Candidate")); }
-    req.candidate = candidate;
+    if (!product) { return next(new Error("Can't find product")); }
+    req.product = product;
     return next();
   });
 });
 
-/* GET  all candidates */
-router.get('/candidates', function(req, res, next){
-  Candidate.find(function(err, candidates){
+/* GET  all products */
+router.get('/products', function(req, res, next){
+  Product.find(function(err, products){
     if(err) { return next(err); }
-    res.json(candidates);
+    res.json(products);
   });
 });
 
-/* GET single candidate */
-router.get('/candidates/:candidate', function(req, res){
+/* GET single product */
+router.get('/products/:product', function(req, res){
   console.log("inside get");
-  res.json(req.candidate);
+  res.json(req.product);
 });
 
-/* POST candidates to database */
-router.post('/candidates', function(req, res, next){
-  var candidate = new Candidate(req.body);
-  candidate.save(function(err, candidate){
+/* POST products to database */
+router.post('/products', function(req, res, next){
+  var product = new Product(req.body);
+  product.save(function(err, product){
     if(err){ return next(err); }
-    res.json(candidate)
+    res.json(product)
   });
 });
 
-/* PUT vote for candidate */
-//candidate.vote is definied as a method in models/PollStation
-router.put('/candidates/:candidate/vote', function(req, res, next){
-    req.candidate.vote(function(err, comment){
+/* PUT vote for product */
+//product.vote is definied as a method in models/MarketPlace
+router.put('/products/:product/vote', function(req, res, next){
+    req.product.vote(function(err, comment){
     if (err) { return next(err); }
-   // console.log(candidate);
-   // res.json(candidate)
+   // console.log(product);
+   // res.json(product)
     res.sendStatus(200);
   });
 });
 
-/*DELETE candidate from database */
-router.delete('/candidates/:candidate', function(req, res) {
+/*DELETE product from database */
+router.delete('/products/:product', function(req, res) {
    //console.log('in delete');
-   req.candidate.remove();
+   req.product.remove();
    res.sendStatus(200);
 });
 

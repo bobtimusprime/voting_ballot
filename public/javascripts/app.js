@@ -1,83 +1,83 @@
-angular.module('polling',[])
-.controller('PollControl',[
+angular.module('shopping',[])
+.controller('ShopControl',[
   '$scope','$http',
   function($scope, $http){
-    $scope.ballot =[];
-    $scope.submittedBallot = [];
+    $scope.cart =[];
+    $scope.submittedCart = [];
 
-    /* Create the candidate
-       --This is called by the addCandidate
-       --Adds to DB using  post AND adds to $scope.ballot[]
+    /* Create the product
+       --This is called by the addproduct
+       --Adds to DB using  post AND adds to $scope.cart[]
        --Because the angular.copy() in getAll is a deep copy, it keeps all info
-       --Ballot.data is the array within the other wrapper information
+       --cart.data is the array within the other wrapper information
     */
-    $scope.create = function(candidate) {
-       return $http.post('/candidates', candidate).then(function(data){
-         $scope.ballot.data.push(data.data);
-	 //console.log($scope.ballot);
+    $scope.create = function(product) {
+       return $http.post('/products', product).then(function(data){
+         $scope.cart.data.push(data.data);
+	 //console.log($scope.cart);
        });
     };
 
-    /* Add candidate
+    /* Add product
        --This pulls the data from the form
-       --Calls the create function to add to database and $scope.ballot
+       --Calls the create function to add to database and $scope.cart
     */
-    $scope.addCandidate = function(){
-      if($scope.firstName === '' && $scope.lastName === '') { return; }
+    $scope.addProduct = function(){
+      if($scope.firstName === '' && $scope.price === '') { return; }
       $scope.create({
          firstName: $scope.firstName,
-         lastName: $scope.lastName,
-         votes: 0,
+         price: $scope.price,
+         purchases: 0,
       });
       $scope.firstName = '';
-      $scope.lastName = '';   
+      $scope.price = '';
     };
-    
-    /*Vote
-      --Increases the votes in the database (PUT)
-      --Increments the votes in the $scope.ballot
+
+    /*purchase
+      --Increases the purchases in the database (PUT)
+      --Increments the purchases in the $scope.cart
     */
-    $scope.vote = function(candidate){
-	//console.log(candidate);     
-	//console.log(candidate._id);
-        return $http.put('/candidates/' + candidate._id + '/vote')
+    $scope.purchase = function(product){
+	//console.log(product);
+	//console.log(product._id);
+        return $http.put('/products/' + product._id + '/purchase')
         .then(function(){
-          //console.log("vote worked");
-          candidate.votes += 1;
+          //console.log("purchase worked");
+          product.purchases += 1;
         });
     };
 
-    /*DoVote
-      --This is to go through the list of selected candidates and increment all their votes
+    /*addToCart
+      --This is to go through the list of selected products and increment all their purchases
     */
-     $scope.dovote = function() {
-	//console.log("In DoVote");
-        angular.forEach($scope.ballot.data, function(value,key){
+     $scope.addToCart = function() {
+	//console.log("In addToCart");
+        angular.forEach($scope.cart.data, function(value,key){
           if(value.selected){
-            $scope.vote(value);
-            $scope.submittedBallot.push(value);
+            $scope.purchase(value);
+            $scope.submittedCart.push(value);
           };
         });
-     };  
+     };
 
 
     /*Delete
-      --Deletes a candidate from the database
-      --Reloads the database list into the $scope.ballot
+      --Deletes a product from the database
+      --Reloads the database list into the $scope.cart
     */
-    $scope.delete = function(candidate) {
-	$http.delete('/candidates/' + candidate._id)
+    $scope.delete = function(product) {
+	$http.delete('/products/' + product._id)
              .then(function(){
 		//console.log("delete worked");
           $scope.getAll(); //This needs to go inside, otherwise it will work asyncly
 	});
-      };        
+      };
 
-    //Fill the $scope.ballot with the candidates from the database
+    //Fill the $scope.cart with the products from the database
     $scope.getAll = function(){
-      return $http.get('/candidates').then(function(ballot){
+      return $http.get('/products').then(function(cart){
         //console.log(ballot);
-        angular.copy(ballot, $scope.ballot);    
+        angular.copy(cart, $scope.cart);
       });
     };
     $scope.getAll(); //Call the function

@@ -1,32 +1,31 @@
-<!DOCTYPE html>
+ShopControl<!DOCTYPE html>
 <html>
 <head>
-   <title>Polling Station</title>
-   
+   <title>shopping Station</title>
+
    <!--Angular dependency-->
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-   
+
    <!--Local Javascript dependency-->
    <script src="javascripts/app.js"></script>
 
    <!--Stylesheets-->
    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-   
+
 </head>
-<body ng-app="polling" ng-controller="PollControl" >
+<body ng-app="shopping" ng-controller="ShopControl" >
   <h1>Polling Station Administration</h1>
-  
-  <div ng-repeat="candidate in ballot.data | orderBy: ['-votes','lastName']">
-    <span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
-    {{candidate.firstName}} {{candidate.lastName}} - Votes: {{candidate.votes}}
+
+  <div ng-repeat="product in ballot.data | orderBy: ['-purchases','price']">
+    <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
+    {{product.firstName}} {{product.price}} - Purchases: {{product.purchases}}
   </div>
-  
-  <form ng-submit="addCandidate()">
+
+  <form ng-submit="addproduct()">
     <input type="text" ng-model="firstName" placeholder="First Name">
-    <input type="text" ng-model="lastName" placeholder="Last Name">
-    <button type="submit">Add Candidate</button>
+    <input type="number" ng-model="price" placeholder="Price">
+    <button type="submit">Add product</button>
   </form>
 
 </body>
 </html>
-
