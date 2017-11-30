@@ -3,6 +3,7 @@ var MarketPlaceSchema = new mongoose.Schema({
    name: String,
    price: Number,
    purchases: {type: Number, default: 0},
+   imgURL: String,
 });
 
 MarketPlaceSchema.methods.purchase = function(cb) {

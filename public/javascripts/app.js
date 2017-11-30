@@ -28,9 +28,11 @@ angular.module('shopping',[])
          name: $scope.name,
          price: $scope.price,
          purchases: 0,
+         imgURL: $scope.imgURL,
       });
       $scope.name = '';
       $scope.price = '';
+      $scope.imgURL = '';
     };
 
     /*purchase
