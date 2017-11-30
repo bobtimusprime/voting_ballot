@@ -29,14 +29,14 @@
       <img ng-src="{{product.imgURL}}" />
     </div>
   </div>
-  
+
     <button ng-click="addToCart()">Add to Cart</button>
 
 
   <h1>Cart </h1>
   <div class="product-list">
     <div class = "product" ng-repeat="product in submittedCart | orderBy: 'price'">
-      <img class="product image" ng-src="{{product.imgURL}}" />
+      <img ng-src="{{product.imgURL}}" />
       {{product.name}} {{product.price}}
     </div>
   </div>
