@@ -32,7 +32,6 @@
   <div = "product-list">
     <div class = "product" ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
       <img ng-src="{{product.imgURL}}" /> <br/>
-
       {{product.name}} <br/>
       Price: ${{product.price}} <br/>
       Purchases: {{product.purchases}}
