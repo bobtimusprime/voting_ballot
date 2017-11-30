@@ -14,9 +14,10 @@ h1{
 .product{
    width: 250px;
    max-width: 90%;
-   border: 2px solid darkblue;
+   border: 2px solid forestgreen;
    border-radius: 3px;
    margin:10px;
+   text-align: center;
 }
 
 .product img{

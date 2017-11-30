@@ -37,7 +37,7 @@
   <div class="product-list">
     <div class = "product" ng-repeat="product in submittedCart | orderBy: 'price'">
       <img ng-src="{{product.imgURL}}" />
-      {{product.name}} {{product.price}}
+      {{product.name}} ${{product.price}}
     </div>
   </div>
 
