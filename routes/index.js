@@ -49,10 +49,10 @@ router.post('/products', function(req, res, next){
   });
 });
 
-/* PUT vote for product */
-//product.vote is definied as a method in models/MarketPlace
-router.put('/products/:product/vote', function(req, res, next){
-    req.product.vote(function(err, comment){
+/* PUT purchase for product */
+//product.purchase is definied as a method in models/MarketPlace
+router.put('/products/:product/purchase', function(req, res, next){
+    req.product.purchase(function(err, comment){
     if (err) { return next(err); }
    // console.log(product);
    // res.json(product)
