@@ -17,7 +17,7 @@ router.get('/admin', function(req, res, next) {
 /* Define paramaters for individual products */
 /* Anytime that :product is put in the route it will run through here first*/
 router.param('product', function(req, res, next, id) {
-  var query = product.findById(id);
+  var query = Product.findById(id);
   query.exec(function (err, product){
     if (err) { return next(err); }
     if (!product) { return next(new Error("Can't find product")); }
