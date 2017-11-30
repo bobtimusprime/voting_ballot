@@ -30,7 +30,7 @@ h1{
   height: 300px;
 }
 
-.top-bar:before{
+.top-bar::after{
   content: ' ';
  display: block;
  position: absolute;
