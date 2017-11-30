@@ -20,7 +20,7 @@
 <body ng-app="shopping" ng-controller="ShopControl" >
   <div class="top-bar">
     <h1>Rainforest Marketplace Administration</h1>
-  </div>
+  </div> <br/>
 
   <form ng-submit="addProduct()">
     <input type="text" ng-model="name" placeholder="Product Name">
@@ -30,7 +30,7 @@
   </form>
 
   <div = "product-list">
-    <div ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
+    <div class = "product" ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
       <img ng-src="{{product.imgURL}}" /> <br/>
 
       {{product.name}} <br/>
