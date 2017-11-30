@@ -31,11 +31,12 @@
 
   <div = "product-list">
     <div ng-repeat="product in cart.data | orderBy: ['-purchases','price']">
-      <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
+      <img ng-src="{{product.imgURL}}" />
+
       {{product.name}} <br/>
       Price: ${{product.price}} <br/>
       Purchases: {{product.purchases}}
-      <img ng-src="{{product.imgURL}}" />
+      <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
     </div>
  </div>
 

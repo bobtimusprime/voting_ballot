@@ -24,9 +24,10 @@
 
   <div class="product-list">
     <div class = "product" ng-repeat="product in cart.data | orderBy: ['price']">
+      <img ng-src="{{product.imgURL}}" />
       <input type="checkbox" ng-model="product.selected" style="width:20px;height:20px;">
       {{product.name}} : ${{product.price}}
-      <img ng-src="{{product.imgURL}}" />
+
     </div>
   </div>
 
