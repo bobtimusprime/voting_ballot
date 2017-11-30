@@ -79,7 +79,7 @@ angular.module('shopping',[])
     //Fill the $scope.cart with the products from the database
     $scope.getAll = function(){
       return $http.get('/products').then(function(cart){
-        //console.log(ballot);
+        console.log(cart);
         angular.copy(cart, $scope.cart);
       });
     };
